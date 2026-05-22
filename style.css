@@ -1,28 +1,80 @@
 /* Efek Animasi Marquee (Bergerak) untuk Logo Partner */
-.animate-marquee {
-    animation: marquee 25s linear infinite;
-}
+/* --- STYLE UNTUK SECTION PARTNER --- */
+        .partner-section {
+            padding: 60px 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+        .customers-section {
+            padding: 60px 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
 
-.animate-marquee2 {
-    animation: marquee2 25s linear infinite;
-}
+        .partner-title {
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 40px;
+        }
 
-@keyframes marquee {
-    0% { transform: translateX(0%); }
-    100% { transform: translateX(-100%); }
-}
+        /* Container utama yang menyembunyikan scrollbar */
+        .marquee-container {
+            display: flex;
+            overflow: hidden;
+            user-select: none;
+            /* Memberikan efek pudar (fade) di sisi kiri dan kanan agar terlihat lebih elegan */
+            mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
+        }
 
-@keyframes marquee2 {
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(0%); }
-}
+        /* Group logo yang akan berjalan */
+        .marquee-content {
+            display: flex;
+            flex-shrink: 0;
+            align-items: center;
+            justify-content: space-around;
+            min-width: 100%;
+            gap: 60px; /* Jarak antar logo */
+            padding: 10px 0;
+            
+            /* Memanggil animasi bergulir */
+            animation: scroll-left 25s linear infinite;
+        }
 
-/* Pause animasi logo saat di-hover */
-.group:hover .animate-marquee,
-.group:hover .animate-marquee2 {
-    animation-play-state: paused;
-}
+        /* Efek hover: Berhenti berjalan saat kursor diarahkan ke logo */
+        .marquee-container:hover .marquee-content {
+            animation-play-state: paused;
+        }
 
+        /* Style untuk masing-masing gambar logo */
+        .marquee-content img {
+            height: 40px; /* Sesuaikan tinggi logo perusahaan */
+            width: auto;
+            object-fit: contain;
+            filter: grayscale(0%); /* Membuat logo menjadi hitam putih/monokrom agar rapi */
+            opacity: 100;
+            transition: all 0.3s ease;
+        }
+
+        /* Saat logo di-hover, warnanya akan muncul kembali */
+        .marquee-content img:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        /* --- ANIMASI CSS --- */
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(0%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
 /* =========================================
    ANIMASI WAVE / OMBAK JUMBOTRON 
    Menggunakan format Background Position
@@ -79,3 +131,35 @@
 
 
 /*Animasi wave*/
+.wave-container {
+  position: relative;
+  width: 100%;
+  height: 15vh; /* Sesuaikan tinggi */
+  margin-bottom: -7px; /* Menghilangkan gap bawah */
+  min-height: 100px;
+  max-height: 150px;
+  background: #3498db00; /* Ubah warna latar belakang sesuai tema website Anda */
+}
+
+.waves {
+  position: relative;
+  width: 100%;
+  height: 15vh;
+  min-height: 100px;
+  max-height: 150px;
+}
+
+/* Animasi Parallax */
+.parallax > use {
+  animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
+}
+
+.parallax > use:nth-child(1) { animation-delay: -2s; animation-duration: 7s; }
+.parallax > use:nth-child(2) { animation-delay: -3s; animation-duration: 10s; }
+.parallax > use:nth-child(3) { animation-delay: -4s; animation-duration: 13s; }
+.parallax > use:nth-child(4) { animation-delay: -5s; animation-duration: 20s; }
+
+@keyframes move-forever {
+  0% { transform: translate3d(-90px,0,0); }
+  100% { transform: translate3d(85px,0,0); }
+}
