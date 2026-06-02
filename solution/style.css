@@ -1,0 +1,165 @@
+/* Efek Animasi Marquee (Bergerak) untuk Logo Partner */
+/* --- STYLE UNTUK SECTION PARTNER --- */
+        .partner-section {
+            padding: 60px 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+        .customers-section {
+            padding: 60px 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+
+        .partner-title {
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 40px;
+        }
+
+        /* Container utama yang menyembunyikan scrollbar */
+        .marquee-container {
+            display: flex;
+            overflow: hidden;
+            user-select: none;
+            /* Memberikan efek pudar (fade) di sisi kiri dan kanan agar terlihat lebih elegan */
+            mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
+        }
+
+        /* Group logo yang akan berjalan */
+        .marquee-content {
+            display: flex;
+            flex-shrink: 0;
+            align-items: center;
+            justify-content: space-around;
+            min-width: 100%;
+            gap: 60px; /* Jarak antar logo */
+            padding: 10px 0;
+            
+            /* Memanggil animasi bergulir */
+            animation: scroll-left 25s linear infinite;
+        }
+
+        /* Efek hover: Berhenti berjalan saat kursor diarahkan ke logo */
+        .marquee-container:hover .marquee-content {
+            animation-play-state: paused;
+        }
+
+        /* Style untuk masing-masing gambar logo */
+        .marquee-content img {
+            height: 40px; /* Sesuaikan tinggi logo perusahaan */
+            width: auto;
+            object-fit: contain;
+            filter: grayscale(0%); /* Membuat logo menjadi hitam putih/monokrom agar rapi */
+            opacity: 100;
+            transition: all 0.3s ease;
+        }
+
+        /* Saat logo di-hover, warnanya akan muncul kembali */
+        .marquee-content img:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        /* --- ANIMASI CSS --- */
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(0%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+/* =========================================
+   ANIMASI WAVE / OMBAK JUMBOTRON 
+   Menggunakan format Background Position
+========================================== */
+.animated-wave {
+    /* Kami menggunakan SVG URL data agar tidak perlu load gambar external */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='1' d='M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,122.7C672,96,768,96,864,117.3C960,139,1056,181,1152,192C1248,203,1344,181,1392,170.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+    background-size: 200% 100%;
+    animation: moveWave 15s linear infinite;
+}
+
+@keyframes moveWave {
+    0% { background-position-x: 0; }
+    100% { background-position-x: -200%; }
+}
+
+
+/* =========================================
+   PENGATURAN SLIDER JUMBOTRON
+========================================== */
+/* Memastikan gambar background slider perlahan membesar (Zoom effect) */
+.active-slide .slide-bg {
+    transform: scale(1.1);
+}
+
+/* Saat slide mati, kembalikan ke skala normal */
+.slide:not(.active-slide) .slide-bg {
+    transform: scale(1);
+}
+
+/* Mengatur kemunculan teks (Fade up) pada slider yang aktif */
+.active-slide .slide-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Mengatur warna Navbar Link Bottom Border Hover */
+.nav-link {
+    position: relative;
+}
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #10b981; /* Emerald */
+    transition: width 0.3s ease;
+}
+.nav-link:hover::after {
+    width: 100%;
+}
+
+
+/*Animasi wave*/
+.wave-container {
+  position: relative;
+  width: 100%;
+  height: 15vh; /* Sesuaikan tinggi */
+  margin-bottom: -7px; /* Menghilangkan gap bawah */
+  min-height: 100px;
+  max-height: 150px;
+  background: #3498db00; /* Ubah warna latar belakang sesuai tema website Anda */
+}
+
+.waves {
+  position: relative;
+  width: 100%;
+  height: 15vh;
+  min-height: 100px;
+  max-height: 150px;
+}
+
+/* Animasi Parallax */
+.parallax > use {
+  animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
+}
+
+.parallax > use:nth-child(1) { animation-delay: -2s; animation-duration: 7s; }
+.parallax > use:nth-child(2) { animation-delay: -3s; animation-duration: 10s; }
+.parallax > use:nth-child(3) { animation-delay: -4s; animation-duration: 13s; }
+.parallax > use:nth-child(4) { animation-delay: -5s; animation-duration: 20s; }
+
+@keyframes move-forever {
+  0% { transform: translate3d(-90px,0,0); }
+  100% { transform: translate3d(85px,0,0); }
+}
