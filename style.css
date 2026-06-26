@@ -119,8 +119,8 @@
     content: '';
     position: absolute;
     width: 0;
-    height: 2px;
-    bottom: -4px;
+    height: 4px;
+    bottom: -13px;
     left: 0;
     background-color: #10b981; /* Emerald */
     transition: width 0.3s ease;
