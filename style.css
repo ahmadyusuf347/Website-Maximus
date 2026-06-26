@@ -163,3 +163,16 @@
   0% { transform: translate3d(-90px,0,0); }
   100% { transform: translate3d(85px,0,0); }
 }
+
+/*Garis pembatas konten*/
+.garis {
+    width: 100%;
+    height: 2px;
+    background: #333;
+    margin: 40px 0;
+}
+
+/* scroll-margin-top id=partners*/
+#partners {
+    scroll-margin-top: 100px;
+}
